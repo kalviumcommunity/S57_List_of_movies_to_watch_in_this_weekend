@@ -18,6 +18,16 @@ function MovieBuff() {
       });
   }, []);
 
+  const handleDelete = (id) => {
+    axios
+      .delete(`http://localhost:3000/api/${id}`)
+      .then((res) => {
+        console.log(res);
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="movie-buff-container">
       <Navbar />
@@ -37,11 +47,19 @@ function MovieBuff() {
             <div className="movie-details">
               <h2 className="movie-title">{movie.Movie_Title}</h2>
               <p className="movie-info">Director: {movie.Director}</p>
-              <p className="movie-info">
-                Release Year: {movie["Release Year"]}
-              </p>
+              <p className="movie-info">Release Year: {movie.Release_Year}</p>
               <p className="movie-info">Genre: {movie.Genre}</p>
+              <p className="movie-info">Rating: {movie.Rating}</p>
             </div>
+            <button
+              className="delete-button"
+              onClick={() => handleDelete(movie._id)}
+            >
+              Delete
+            </button>
+            <Link className="edit-button" to={`/editMovie/${movie._id}`}>
+              Edit
+            </Link>
           </div>
         ))}
       </div>
