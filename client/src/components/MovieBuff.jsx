@@ -11,7 +11,6 @@ function MovieBuff() {
     axios
       .get("http://localhost:3000/api")
       .then((response) => {
-        console.log(response.data);
         setMovies(response.data);
       })
       .catch((error) => {
@@ -22,7 +21,11 @@ function MovieBuff() {
   return (
     <div className="movie-buff-container">
       <Navbar />
+      <Link to="/create">Add Movie+</Link>
       <h1>List of Movies to Watch in this WeekEnd</h1>
+      <Link id="add" className="button-3d-hover" to="/create">
+        Add new movie
+      </Link>
       <div className="movie-container">
         {movies.map((movie, index) => (
           <div key={index} className="movie-card">
