@@ -1,42 +1,211 @@
-.movies-container {
+/* MovieBuff.css */
+h1 {
+  text-align: center;
+  font-family: cursive;
+  color: white;
+  font-size: 30px;
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+.movie-container {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
+  max-width: 100%;
+  max-height: 400px;
   justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  font-family: cursive;
 }
 
 .movie-card {
+  width: calc(20.33% - 40px);
   margin: 20px;
-  padding: 10px;
+  padding: 20px;
+  background-color: #f5f5f5;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.movie-card img {
-  width: 150px;
-  height: auto;
+.movie-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.movie-image {
+  max-width: 100%;
+  max-height: 300px;
+  margin-bottom: 10px;
   border-radius: 5px;
+  overflow: hidden;
+}
+
+.movie-details {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: black;
+  line-height: 1.5;
+}
+
+.movie-title {
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 .movie-info {
-  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+/* CreateMovie.css */
+
+.create-form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  color: black;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.movie-info h2 {
-  font-size: 1.2rem;
+.create-form label {
+  font-weight: bold;
   margin-bottom: 5px;
 }
 
-.movie-info p {
-  margin: 5px 0;
+.create-form input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-.movie-info a {
-  color: #007bff;
+.create-form button[type="submit"] {
+  background-color: #4caf50;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.create-form button[type="submit"]:hover {
+  background-color: #45a049;
+}
+#add {
+  position: relative;
+  left: 1100px;
+  top: -110px;
+}
+.add-movie {
+  font-family: cursive, sans-serif;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  color: black;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-movie h1 {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.add-movie form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-movie label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.add-movie input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.add-movie button[type="submit"] {
+  background-color: #4caf50;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.add-movie button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.back-button {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
   text-decoration: none;
+  color: #ff00a2;
+  transition: color 0.3s ease;
 }
 
-.movie-info a:hover {
-  text-decoration: underline;
+.back-button:hover {
+  color: #b40000;
+}
+.delete-button {
+  background-color: #dc3545; /* Red color for delete button */
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  margin-left: 100px;
+}
+
+.delete-button:hover {
+  background-color: #c82333; /* Darker red color on hover */
+}
+.edit-button {
+  background-color: #007bff; /* Blue color for edit button */
+  color: white;
+  padding: 5px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-right: 100px;
+  margin-top: -32px;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
 }
