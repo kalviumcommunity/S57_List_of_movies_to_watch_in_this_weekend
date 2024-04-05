@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const { connectDB } = require("./db.js");
+const { validateMovie } = require("./validator.js");
+const Joi = require("joi");
 const Movie = require("./schema.js");
 router.get("/", async (req, res) => {
   try {
@@ -26,22 +28,18 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/add_movies", async (req, res) => {
-  const newMovie = new Movie({
-    MovieId: req.params.id,
-    Director: req.body.Director,
-    Release_Year: req.body.Release_Year,
-    Genre: req.body.Genre,
-    Rating: req.body.Rating,
-    Image_url: req.body.Image_url,
-    Movie_Title: req.body.Movie_Title,
-  });
   try {
-    const savedMovie = await newMovie.save();
-    res.json(savedMovie); // 201 status code for resource creation
+    const validateMovieResult = validateMovie(req.body);
+    if (validateMovieResult.error) {
+      return res.status(400).json({ error: validateMovieResult.error.message });
+    }
+    const newMovie = new Movie(req.body);
+    const saveMovie = await newMovie.save();
+    res.json(saveMovie);
   } catch (err) {
     res
       .status(500)
-      .json({ error: "An error occurred while adding a new movie." });
+      .json({ error: "An error occurred while adding the movie." });
   }
 });
 
