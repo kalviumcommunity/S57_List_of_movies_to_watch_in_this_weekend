@@ -4,15 +4,15 @@ const MovieBuff = () => {
   // Sample movie data
   const movies = [
     {
-      title: "Inception",
-      director: "Christopher Nolan",
+      title: "Vadachennai",
+      director: "Vettri Maaran",
       genres: ["Action", "Adventure", "Sci-Fi"],
       releaseYear: 2010,
       imageUrl:
         "https://m.media-amazon.com/images/M/MV5BZjhkYTU2YTgtM2ZkYS00MzJkLWE2ZjAtZjY5MTI4OWE2YmZjXkEyXkFqcGdeQXVyODIwMDI1NjM@._V1_.jpg",
     },
     {
-      title: "The Shawshank Redemption",
+      title: "KGF",
       director: "Frank Darabont",
       genres: ["Drama"],
       releaseYear: 1994,
