@@ -1,43 +1,49 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 import "./MovieBuff.css";
-const MovieBuff = () => {
-  // Sample movie data
-  const movies = [
-    {
-      title: "Vadachennai",
-      director: "Vettri Maaran",
-      genres: ["Action", "Adventure", "Sci-Fi"],
-      releaseYear: 2010,
-      imageUrl:
-        "https://m.media-amazon.com/images/M/MV5BZjhkYTU2YTgtM2ZkYS00MzJkLWE2ZjAtZjY5MTI4OWE2YmZjXkEyXkFqcGdeQXVyODIwMDI1NjM@._V1_.jpg",
-    },
-    {
-      title: "KGF",
-      director: "Frank Darabont",
-      genres: ["Drama"],
-      releaseYear: 1994,
-      imageUrl: "https://wallpapercave.com/wp/wp4019377.jpg",
-    },
-    // Add more movie data as needed
-  ];
+import Navbar from "./Navbar";
+
+function MovieBuff() {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/api")
+      .then((response) => {
+        console.log(response.data);
+        setMovies(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
-    <div className="movies-container">
-      {movies.map((movie, index) => (
-        <div className="movie-card" key={index}>
-          <img src={movie.imageUrl} alt={movie.title} />
-          <div className="movie-info">
-            <h2>{movie.title}</h2>
-            <p>
-              Director: <a href="#">{movie.director}</a>
-            </p>
-            <p>Genres: {movie.genres.join(", ")}</p>
-            <p>Release Year: {movie.releaseYear}</p>
+    <div className="movie-buff-container">
+      <Navbar />
+      <h1>List of Movies to Watch in this WeekEnd</h1>
+      <div className="movie-container">
+        {movies.map((movie, index) => (
+          <div key={index} className="movie-card">
+            <img
+              src={movie.Image_url}
+              alt={movie.Movie_Title}
+              className="movie-image"
+            />
+            <div className="movie-details">
+              <h2 className="movie-title">{movie.Movie_Title}</h2>
+              <p className="movie-info">Director: {movie.Director}</p>
+              <p className="movie-info">
+                Release Year: {movie["Release Year"]}
+              </p>
+              <p className="movie-info">Genre: {movie.Genre}</p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
-};
+}
 
 export default MovieBuff;
