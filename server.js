@@ -5,7 +5,7 @@ const { connectDB, checkConnection } = require("./db");
 const routes = require("./routes.js");
 const app = express();
 const port = 3000;
-
+//sgtdh
 app.use(express.json());
 app.use(cors()); // Allow requests from all origins
 
