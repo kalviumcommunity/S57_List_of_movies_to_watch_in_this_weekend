@@ -3,7 +3,7 @@ import Firstpage from "./components/Firstpage";
 import MovieBuff from "./components/MovieBuff";
 import CreateMovie from "./components/createMovie";
 import "./App.css";
-
+import EditMovie from "./components/editMovie";
 function App() {
   return (
     <>
@@ -11,6 +11,7 @@ function App() {
         <Route path="/" element={<Firstpage />}></Route>
         <Route path="/movies" element={<MovieBuff />}></Route>
         <Route path="/create" element={<CreateMovie />}></Route>
+        <Route path="/editMovie/:id" element={<EditMovie />}></Route>
       </Routes>
     </>
   );

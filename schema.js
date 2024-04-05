@@ -14,7 +14,7 @@ const data = new mongoose.Schema({
     required: true,
   },
   Rating: {
-    type: Number,
+    type: String,
     required: true,
   },
   Image_url: {
