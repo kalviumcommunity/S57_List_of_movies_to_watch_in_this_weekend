@@ -1,0 +1,99 @@
+/* Container for the signup form */
+.loginbody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+/* Form container */
+.login-field {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  margin-left: 320px;
+}
+
+/* Heading */
+#signup {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333333;
+  text-align: center;
+}
+
+/* Paragraph */
+.para {
+  text-align: center;
+  color: #666666;
+  margin-bottom: 30px;
+}
+
+/* Input fields */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Sign in link */
+#ask-sign {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #666666;
+}
+
+#ask-signin {
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* Submit button */
+#submit {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+#submit:hover {
+  background-color: #0056b3;
+}
+
+/* Back to home link */
+.backtohome-btn {
+  display: block;
+  text-align: center;
+  margin-top: 600px;
+  margin-right: 100px;
+  color: #ffffff;
+  transition: color 0.3s ease;
+  background-color: #ff0000;
+  padding: 10px 20px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.backtohome-btn:hover {
+  color: #0056b3; /* Darker shade of blue */
+}
+
+/* Success message */
+.success-message {
+  color: #4caf50;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 20px;
+}
