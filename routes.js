@@ -1,9 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const { connectDB } = require("./db.js");
 const { validateMovie } = require("./validator.js");
 const Joi = require("joi");
 const Movie = require("./schema.js");
+const person = require("./userSchema.js");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
+
 router.get("/", async (req, res) => {
   try {
     const movies = await Movie.find();
@@ -72,4 +75,65 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+router.get("/users/names", async (req, res) => {
+  try {
+    const users = await person.find();
+    res.status(200).json(users);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+router.post("/signup", async (req, res) => {
+  try {
+    const user = await person.create({
+      userName: req.body.userName,
+      password: req.body.password,
+    });
+    res.send(user);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+router.post("/login", async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const user = await person.findOne({ username, password });
+
+    if (!user) {
+      return res.status(401).json({ error: "Invalid username / password" });
+    } else {
+      res.status(200).json({ message: "login sucessful" });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+router.post("/logout", (req, res) => {
+  res.clearCookie("username");
+  res.clearCookie("password");
+
+  res.status(200).json({ message: "Logout succesful" });
+});
+router.post("/auth", async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const user = {
+      username: username,
+      password: password,
+    };
+    const ACCESS_TOKEN = jwt.sign(user, process.env.ACCESS_TOKEN, {
+      expiresIn: "1d",
+    });
+    res.cookie("token", ACCESS_TOKEN, { maxAge: 365 * 24 * 60 * 60 * 100 });
+    res.json({ accessToken: ACCESS_TOKEN });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 module.exports = router;

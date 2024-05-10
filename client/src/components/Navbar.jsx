@@ -22,6 +22,12 @@ function Navbar() {
         <li>
           <Link to="/actors">Upcoming</Link>
         </li>
+        <li>
+          <Link to="/signup">Sign up</Link>
+        </li>
+        <li>
+          <Link to="/signin">Sign in</Link>
+        </li>
         {/* Add more navigation links as needed */}
       </ul>
     </nav>
@@ -29,3 +35,6 @@ function Navbar() {
 }
 
 export default Navbar;
+{
+  /*  */
+}
