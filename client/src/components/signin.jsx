@@ -26,12 +26,14 @@ function Login() {
         document.cookie = `accessToken=${accessToken};expires=${expires};path=/;`;
         localStorage.setItem("user", userId);
         console.log("Login successful");
-        navigate("/");
+        alert("Login successful");
+        navigate("/movies");
       } else {
         console.log("Login error");
-        // Handle login error here
+        alert("Login error");
       }
     } catch (err) {
+      alert("The password or username is incorrect Try again");
       console.error(err);
       // Handle fetch error here
     }
