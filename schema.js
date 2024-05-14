@@ -1,4 +1,4 @@
-const { default: mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 
 const data = new mongoose.Schema({
   Director: {
@@ -22,6 +22,10 @@ const data = new mongoose.Schema({
     required: false,
   },
   Movie_Title: {
+    type: String,
+    required: true,
+  },
+  userName: {
     type: String,
     required: true,
   },
