@@ -28,14 +28,28 @@ function MovieBuff() {
       .catch((err) => console.log(err));
   };
 
+  const handleLogout = () => {
+    // Clear all cookies here
+    document.cookie.split(";").forEach((c) => {
+      document.cookie = c
+        .replace(/^ +/, "")
+        .replace(/=.*/, `=;expires=${new Date().toUTCString()};path=/`);
+    });
+    // Redirect to logout page or login page
+    window.location.href = "/"; // Redirect to logout page
+    // window.location.href = "/login"; // Redirect to login page
+  };
+
   return (
     <div className="movie-buff-container">
       <Navbar />
-      <Link to="/create">Add Movie+</Link>
       <h1>List of Movies to Watch in this WeekEnd</h1>
       <Link id="add" className="button-3d-hover" to="/create">
         Add new movie
       </Link>
+      <button className="logout-button" onClick={handleLogout}>
+        Logout
+      </button>
       <div className="movie-container">
         {movies.map((movie, index) => (
           <div key={index} className="movie-card">

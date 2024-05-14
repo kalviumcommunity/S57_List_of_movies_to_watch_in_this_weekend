@@ -32,14 +32,15 @@ router.get("/:id", async (req, res) => {
 
 router.post("/add_movies", async (req, res) => {
   try {
-    const validateMovieResult = validateMovie(req.body);
-    if (validateMovieResult.error) {
-      return res.status(400).json({ error: validateMovieResult.error.message });
+    const { error, value } = validateMovie(req.body);
+    if (error) {
+      return res.status(400).json({ error });
     }
-    const newMovie = new Movie(req.body);
-    const saveMovie = await newMovie.save();
-    res.json(saveMovie);
+    const newMovie = new Movie(value);
+    const savedMovie = await newMovie.save();
+    res.json(savedMovie);
   } catch (err) {
+    console.error("Error adding movie:", err);
     res
       .status(500)
       .json({ error: "An error occurred while adding the movie." });

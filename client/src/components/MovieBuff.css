@@ -175,7 +175,16 @@ h1 {
   color: #ff00a2;
   transition: color 0.3s ease;
 }
-
+.logout-button {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+  background-color: #dc3545; /* Red color for delete button */
+  color: white;
+  padding: 8px 16px;
+  border: none;
+}
 .back-button:hover {
   color: #b40000;
 }
